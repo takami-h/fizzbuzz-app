@@ -1,12 +1,14 @@
 package com.redhat.labs.fizzbuzz.adapter;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.redhat.labs.fizzbuzz.application.FizzBuzz;
 
+@CrossOrigin
 @RestController
 public class FizzBuzzController {
   private FizzBuzz fizzbuzz;
