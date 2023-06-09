@@ -3,6 +3,7 @@
     "language": "ja",
     "publishQuiet": true,
     "requireModule": ["ts-node/register"],
-    "require": ["features/**/*.ts"]
+    "require": ["features/**/*.ts"],
+    "format": ["html:e2e-test-report.html"]
   }
 }

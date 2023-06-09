@@ -1,4 +1,4 @@
-import { After, AfterAll, Before, BeforeAll, World } from "@cucumber/cucumber";
+import { After, AfterAll, AfterStep, Before, BeforeAll, World } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
 import { FizzBuzzPage } from "../pages/fizzbuzz_page";
 
@@ -26,5 +26,7 @@ Before(async function(this: FbWorld) {
   this.fizzbuzz = new FizzBuzzPage(this.page);
 });
 After(async function(this: FbWorld) {
+  const buffer = await this.page.screenshot();
+  this.attach(buffer, 'image/png');
   await this.context.close();
 });
