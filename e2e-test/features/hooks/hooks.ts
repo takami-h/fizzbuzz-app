@@ -1,4 +1,4 @@
-import { After, AfterAll, AfterStep, Before, BeforeAll, World } from "@cucumber/cucumber";
+import { After, AfterAll, Before, BeforeAll, World } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
 import { FizzBuzzPage } from "../pages/fizzbuzz_page";
 
