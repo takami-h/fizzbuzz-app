@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "fizzbuzz-ui"
+		},
+		{
+			"path": "e2e-test"
 		}
 	],
 	"settings": {
