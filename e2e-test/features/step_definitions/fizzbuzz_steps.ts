@@ -1,16 +1,15 @@
 import { Given, When, Then } from '@cucumber/cucumber';
+import { expect } from '@playwright/test';
+import type { FbWorld } from '../hooks/hooks';
 
-Given('Fizz Buzzを始める', function() {
-  // 画面を開く
-  return 'pending';
+Given('Fizz Buzzを始める', async function(this: FbWorld) {
+  await this.fizzbuzz.open();
 });
 
-When('{int} を指定する', function(number: number) {
-  // numberを入力してsend押す
-  return 'pending';
+When('{string} を指定する', async function(this: FbWorld, number: string) {
+  await this.fizzbuzz.send(number);
 });
 
-Then('{string} が返る', function(answer: string) {
-  // ログの先頭にanswerが書かれている
-  return 'pending';
+Then('{string} が返る', async function(this: FbWorld, answer: string) {
+  await expect(this.fizzbuzz.latestAnswer).toHaveText(answer);
 });
