@@ -1,9 +1,16 @@
 package com.redhat.labs.fizzbuzz.application;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class FizzBuzzTest {
   private FizzBuzz fizzbuzz;
@@ -34,6 +41,20 @@ class FizzBuzzTest {
     assertThat(fizzbuzz.fizzbuzz(3*5)).isEqualTo("Fizz Buzz");
     assertThat(fizzbuzz.fizzbuzz(3*5*2)).isEqualTo("Fizz Buzz");
     assertThat(fizzbuzz.fizzbuzz(3*5*3)).isEqualTo("Fizz Buzz");
+  }
+
+  @ParameterizedTest
+  @MethodSource("fizzbuzzProvider")
+  void fizzbuzzTest(int i, String expectedReturn) {
+    assertThat(fizzbuzz.fizzbuzz(i)).isEqualTo(expectedReturn);
+  }
+  static Stream<Arguments> fizzbuzzProvider() {
+    return Stream.of(
+      arguments(1, "1"),
+      arguments(3, "Fizz"),
+      arguments(5, "Buzz"),
+      arguments(3*5, "Fizz Buzz")
+    );
   }
 
   @Test void fizzbuzzShouldThrowException() {
