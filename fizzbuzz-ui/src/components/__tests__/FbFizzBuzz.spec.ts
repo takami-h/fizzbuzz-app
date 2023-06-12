@@ -27,8 +27,8 @@ describe('App', () => {
     await user.click(screen.getByText('send'));
 
     // number sent by user should be displayed.
-    expect(within(screen.getByLabelText('number')).getByText('3')).toBeVisible();
+    expect(screen.getAllByRole('listitem')[1]).toHaveTextContent('3');
     // fizzbuzz api response should be displayed
-    expect(within(screen.getByLabelText('latest answer')).getByText('Fizz')).toBeVisible();
+    expect(screen.getAllByRole('listitem')[0]).toHaveTextContent('Fizz');
   });
 });

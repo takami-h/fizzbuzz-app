@@ -12,7 +12,7 @@ defineProps<{
 
 <template>
   <ul class="logs">
-    <li v-for="(log, index) in logs.slice().reverse()" :key="log.id" class="log-entry" :class="log.type" :aria-label="`${index === 0 ? 'latest' : ''} ${log.type}`">{{ log.message }}</li>
+    <li v-for="log in logs.slice().reverse()" :key="log.id" class="log-entry" :class="log.type" >{{ log.message }}</li>
   </ul>
 </template>
 
