@@ -1,5 +1,6 @@
 package com.redhat.labs.fizzbuzz.adapter;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class FizzBuzzController {
     this.fizzbuzz = fizzbuzz;
   }
 
-  @GetMapping("/fizzbuzz/{number}")
+  @GetMapping(value = "/fizzbuzz/{number}", produces = { MediaType.TEXT_PLAIN_VALUE })
   public ResponseEntity<String> fizzbuzz(@PathVariable("number") Integer number) {
     try {
       var result = fizzbuzz.fizzbuzz(number);

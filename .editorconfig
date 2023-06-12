@@ -1,0 +1,22 @@
+root=true
+
+[*]
+charset = utf-8
+indent_style = space
+end_of_line = lf
+
+
+[*.java]
+indent_size = 2
+
+[*.{js,ts}]
+indent_size = 2
+
+[*.vue]
+indent_size = 2
+
+[*.feature]
+indent_size = 2
+
+[*.{xml,xsd}]
+indent_size = 2

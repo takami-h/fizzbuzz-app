@@ -13,30 +13,30 @@ import io.restassured.RestAssured;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FizzbuzzApiApplicationIntegrationTest {
-	@LocalServerPort int port;
+  @LocalServerPort int port;
 
-	@BeforeEach void setup() {
-		RestAssured.port = this.port;
-	}
+  @BeforeEach void setup() {
+    RestAssured.port = this.port;
+  }
 
-	@Test void shouldReturnFizz() {
-		when()
-			.get("/fizzbuzz/{number}", 3)
-		.then()
-			.statusCode(HttpStatus.OK.value())
-			.body(equalTo("Fizz"));
-	}
+  @Test void shouldReturnFizz() {
+    when()
+      .get("/fizzbuzz/{number}", 3)
+    .then()
+      .statusCode(HttpStatus.OK.value())
+      .body(equalTo("Fizz"));
+  }
 
-	@Test void shouldReturnBadRequest() {
-		shouldReturnBadRequestIfPassed("foo");
-		shouldReturnBadRequestIfPassed("0");
-		shouldReturnBadRequestIfPassed("101");
-	}
+  @Test void shouldReturnBadRequest() {
+    shouldReturnBadRequestIfPassed("foo");
+    shouldReturnBadRequestIfPassed("0");
+    shouldReturnBadRequestIfPassed("101");
+  }
 
-	private void shouldReturnBadRequestIfPassed(String param) {
-		when()
-			.get("/fizzbuzz/{number}", param)
-		.then()
-			.statusCode(HttpStatus.BAD_REQUEST.value());
-	}
+  private void shouldReturnBadRequestIfPassed(String param) {
+    when()
+      .get("/fizzbuzz/{number}", param)
+    .then()
+      .statusCode(HttpStatus.BAD_REQUEST.value());
+  }
 }
