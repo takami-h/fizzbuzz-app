@@ -21,7 +21,9 @@ AfterAll(async function() {
 });
 
 Before(async function(this: FbWorld) {
-  this.context = await browser.newContext();
+  this.context = await browser.newContext({
+    baseURL: 'http://localhost:5173'
+  });
   this.page = await this.context.newPage();
   this.fizzbuzz = new FizzBuzzPage(this.page);
 });

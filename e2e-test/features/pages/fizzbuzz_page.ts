@@ -14,7 +14,7 @@ export class FizzBuzzPage {
   }
 
   async open() {
-    await this.page.goto('http://localhost:5173');
+    await this.page.goto('/');
   }
   async send(number: string) {
     await this.yourNumberInput.fill(number);
