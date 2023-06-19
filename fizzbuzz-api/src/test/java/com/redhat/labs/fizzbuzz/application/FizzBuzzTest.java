@@ -58,8 +58,9 @@ class FizzBuzzTest {
   }
 
   @Test void fizzbuzzShouldThrowException() {
-    assertThatThrownBy(() -> fizzbuzz.fizzbuzz(0), "fizzbuzz only handle integer 1 - 100")
-      .isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> fizzbuzz.fizzbuzz(0))
+      .isInstanceOf(IllegalArgumentException.class)
+      .hasMessage("fizzbuzz only accepts integer 1 ... 100");
     assertThatThrownBy(() -> fizzbuzz.fizzbuzz(101))
       .isInstanceOf(IllegalArgumentException.class);
   }
