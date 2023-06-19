@@ -2,6 +2,8 @@ import { After, AfterAll, Before, BeforeAll, World } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
 import { FizzBuzzPage } from "../pages/fizzbuzz_page";
 
+const BASE_URL: string = process.env.BASE_URL || 'http://localhost:5173';
+
 export type FbWorld = World & {
   context: BrowserContext,
   page: Page,
@@ -22,7 +24,7 @@ AfterAll(async function() {
 
 Before(async function(this: FbWorld) {
   this.context = await browser.newContext({
-    baseURL: 'http://localhost:5173'
+    baseURL: BASE_URL
   });
   this.page = await this.context.newPage();
   this.fizzbuzz = new FizzBuzzPage(this.page);

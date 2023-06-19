@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
+import { API_BASE_URL } from '../../config';
 import FbFizzBuzz from '../FbFizzBuzz.vue';
 
 describe('App', () => {
@@ -15,7 +16,7 @@ describe('App', () => {
   it('should be Fizz if 3', async () => {
     server.use(
       rest.get(
-        'http://localhost:8080/fizzbuzz/3',
+        `${API_BASE_URL}/fizzbuzz/3`,
         (req, res, ctx) => res(ctx.text('Fizz'))
       )
     );

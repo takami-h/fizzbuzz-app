@@ -1,6 +1,8 @@
+import { API_BASE_URL } from '../config';
+
 export async function fizzbuzz(number: string): Promise<string> {
   try {
-    const response = await fetch(`http://localhost:8080/fizzbuzz/${number}`);
+    const response = await fetch(`${API_BASE_URL}/fizzbuzz/${number}`);
     if (response.status >= 400) {
       return Promise.resolve('ERROR');
     } else {
