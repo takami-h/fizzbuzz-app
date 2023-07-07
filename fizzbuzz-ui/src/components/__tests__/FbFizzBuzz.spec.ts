@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, within } from '@testing-library/vue';
+import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -31,5 +31,17 @@ describe('App', () => {
     expect(screen.getAllByRole('listitem')[1]).toHaveTextContent('3');
     // fizzbuzz api response should be displayed
     expect(screen.getAllByRole('listitem')[0]).toHaveTextContent('Fizz');
+  });
+
+  it('should list errors if invaild input', async () => {
+    const user = userEvent.setup();
+
+    render(FbFizzBuzz);
+
+    await user.type(screen.getByLabelText('your number'), '0.9');
+    await user.click(screen.getByText('send'));
+
+    expect(screen.getByText('整数を入力してください')).toBeVisible();
+    expect(screen.getByText('1から100までの範囲で入力してください')).toBeVisible();
   });
 });
