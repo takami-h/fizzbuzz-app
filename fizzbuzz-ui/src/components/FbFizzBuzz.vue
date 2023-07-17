@@ -11,7 +11,7 @@ type State = {
   logs: Log[]
 };
 
-const state = reactive<State>({
+const state: State = reactive({
   logs: []
 });
 

@@ -8,7 +8,7 @@ type State = {
   errors: FieldErrors
 };
 
-const state = reactive<State>({
+const state: State = reactive({
   newNumber: '',
   errors: new FieldErrors()
 });
