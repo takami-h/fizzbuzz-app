@@ -10,7 +10,7 @@ import FbFizzBuzz from '../FbFizzBuzz.vue';
 describe('App', () => {
   const server = setupServer();
   beforeAll(() => server.listen());
-  afterEach(() => server.restoreHandlers());
+  afterEach(() => server.resetHandlers());
   afterAll(() => server.close());
 
   it('should be Fizz if 3', async () => {
