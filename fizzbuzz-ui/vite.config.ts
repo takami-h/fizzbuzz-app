@@ -12,6 +12,12 @@ export default defineConfig({
     }
   },
   server: {
-    host: true
+    host: true,
+    proxy: {
+      '/fizzbuzz-api': {
+        target: 'http://localhost:8080',
+        rewrite: (path: string) => path.replace(/^\/fizzbuzz-api/, '')
+      }
+    }
   }
 })
