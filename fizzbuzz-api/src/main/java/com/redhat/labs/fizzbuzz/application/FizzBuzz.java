@@ -8,8 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class FizzBuzz {
 
-  private static final int MIN = 0;
-  private static final int MAX = 100;
+  private FizzBuzzPolicy policy;
+
+  public FizzBuzz(FizzBuzzPolicy policy) {
+    this.policy = policy;
+  }
 
   /**
    * 指定された整数に対して、整数、Fizz、Buzz、Fizz Buzzのいずれかを返す。
@@ -18,8 +21,10 @@ public class FizzBuzz {
    * @return 整数、Fizz、Buzz、Fizz Buzzのいずれか
    */
   public String fizzbuzz(int i) {
-    if (i <= MIN || i > MAX) {
-      throw new IllegalArgumentException("fizzbuzz only accepts integer 1 ... 100");
+    if (i < policy.getMinNumber() || i > policy.getMaxNumber()) {
+      throw new IllegalArgumentException(
+        String.format("fizzbuzz only accepts integer %d ... %d",
+                      policy.getMinNumber(), policy.getMaxNumber()));
     }
 
     if (divisibleBy3(i) && divisibleBy5(i)) {

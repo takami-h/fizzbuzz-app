@@ -7,9 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Spring Bootのmainクラス。
  */
 @SpringBootApplication
-public final class FizzbuzzApiApplication {
-  private FizzbuzzApiApplication() { }
-
+@SuppressWarnings("PMD")
+public class FizzbuzzApiApplication {
   /**
    * Spring Bootのエントリーポイント。
    * 
