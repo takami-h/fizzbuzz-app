@@ -1,6 +1,6 @@
 import { isInteger, isInRange } from '../validations';
 
-describe('error', () => {
+describe('validations', () => {
   describe('isInteger', () => {
     it('should be true if integer', () => {
       expect(isInteger('1')).toBeTruthy();
