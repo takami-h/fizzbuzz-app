@@ -3,6 +3,7 @@ package com.redhat.labs.fizzbuzz.application;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.*;
 
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -75,5 +76,22 @@ class FizzBuzzTest {
         .hasMessage("fizzbuzz only accepts integer 1 ... 100");
     assertThatThrownBy(() -> fizzbuzz.fizzbuzz(101))
         .isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test void useCorrectAssertion1() {
+    var expected = LocalDateTime.of(2023, 12, 31, 10, 0, 0);
+    var actual = LocalDateTime.now();
+    
+    assertThat(actual.equals(expected))
+      .as("適切なアサーションを使わないと、エラーの時にわかりづらい。せめて description 等でエラー時の情報を補強すること。actual = %s", actual)
+      .isTrue();
+  }
+  @Test void useCorrectAssertion2() {
+    var expected = LocalDateTime.of(2023, 12, 31, 10, 0, 0);
+    var actual = LocalDateTime.now();
+    
+    assertThat(actual)
+      .as("エラーの情報が詳しく出る")
+      .isEqualTo(expected);
   }
 }
