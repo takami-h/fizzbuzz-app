@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -78,6 +79,7 @@ class FizzBuzzTest {
         .isInstanceOf(IllegalArgumentException.class);
   }
 
+  @Disabled("不適切なアサーションのデモ")
   @Test void useCorrectAssertion1() {
     var expected = LocalDateTime.of(2023, 12, 31, 10, 0, 0);
     var actual = LocalDateTime.now();
@@ -86,6 +88,7 @@ class FizzBuzzTest {
       .as("適切なアサーションを使わないと、エラーの時にわかりづらい。せめて description 等でエラー時の情報を補強すること。actual = %s", actual)
       .isTrue();
   }
+  @Disabled("適切なアサーションのデモ")
   @Test void useCorrectAssertion2() {
     var expected = LocalDateTime.of(2023, 12, 31, 10, 0, 0);
     var actual = LocalDateTime.now();
