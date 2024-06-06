@@ -6,6 +6,7 @@ import static org.junit.jupiter.params.provider.Arguments.*;
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
+import com.redhat.labs.fizzbuzz.adapter.AppConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -17,17 +18,9 @@ class FizzBuzzTest {
   private FizzBuzz fizzbuzz;
 
   @BeforeEach void setup() {
-    var policy = new FizzBuzzPolicy() {
-      @Override
-      public int getMinNumber() {
-        return 1;
-      }
-
-      @Override
-      public int getMaxNumber() {
-        return 100;
-      }
-    };
+    var policy = new AppConfig();
+    policy.setMinNumber(1);
+    policy.setMaxNumber(100);
 
     fizzbuzz = new FizzBuzz(policy);
   }
