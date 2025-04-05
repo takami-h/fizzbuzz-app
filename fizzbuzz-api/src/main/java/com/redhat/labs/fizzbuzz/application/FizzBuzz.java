@@ -21,7 +21,7 @@ public class FizzBuzz {
    * @return 整数、Fizz、Buzz、Fizz Buzzのいずれか
    */
   public String fizzbuzz(int i) {
-    if (i < policy.getMinNumber() || i > policy.getMaxNumber()) {
+    if (!policy.isInValidRange(i)) {
       throw new IllegalArgumentException(
         String.format("fizzbuzz only accepts integer %d ... %d",
                       policy.getMinNumber(), policy.getMaxNumber()));

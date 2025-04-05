@@ -13,6 +13,11 @@ public class AppConfig implements FizzBuzzPolicy {
   private int minNumber;
   private int maxNumber;
 
+  @Override
+  public boolean isInValidRange(int i) {
+    return getMinNumber() <= i && i <= getMaxNumber();
+  }
+
   public int getMinNumber() {
     return minNumber;
   }
